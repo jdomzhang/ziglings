@@ -32,10 +32,26 @@ pub fn main() void {
     // we can CONVERT IT TO A SLICE. (Hint: we do know the length!)
     //
     // Please fix this line so the print statement below can print it:
-    const zen12_string: []const u8 = zen_manyptr;
+    const zen12_string: []const u8 = zen_manyptr[0..21];
 
     // Here's the moment of truth!
     std.debug.print("{s}\n", .{zen12_string});
+
+    // more 1
+    const more1: *const []const u8 = &zen12_string;
+    std.debug.print("{s}\n", .{more1.*});
+
+    // more 2
+    const more2: [21]u8 = zen12.*;
+    std.debug.print("{s}\n", .{more2});
+
+    // more 3
+    const more3: [*]const u8 = zen_manyptr[0..21];
+    std.debug.print("{s}\n", .{more3[0..21]});
+
+    // more 4
+    const more4: []const u8 = zen12;
+    std.debug.print("{s}\n", .{more4});
 }
 //
 // Are all of these pointer types starting to get confusing?
